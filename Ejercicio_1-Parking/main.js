@@ -9,6 +9,7 @@ function main() {
     var repetir = true
     var rep_introducir = false
     var rep_sacar = false
+    var rep_ver = false
     do {
         var menu = prompt("PARKING\n¿Que quieres hacer?\n1.-Introducir un vehículo" +
             "\n2.-Sacar un vehiculo" +
@@ -32,7 +33,11 @@ function main() {
                 break;
 
             case 3:
-                visualizar(lugares_ocupados)
+                do {
+                    visualizar(lugares_ocupados)
+                    rep_ver = confirmar("seguir comprobando el parking")
+                } while (rep_ver)
+
                 break;
             case 4:
 
@@ -40,6 +45,7 @@ function main() {
                 break;
 
             default:
+                alert("ERROR,\nOrden no reconocida")
                 break;
         }
     } while (repetir);

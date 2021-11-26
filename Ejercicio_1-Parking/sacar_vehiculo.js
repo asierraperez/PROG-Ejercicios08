@@ -1,7 +1,7 @@
 function sacar_vehiculo(situacion, coches, camiones) {
     var aux_Posicion_sacar = situacion
     var aux_vehiculo
-    var tabla_sacar = ""
+    var encontro_sacar = false
     var nombre = prompt("PARKING\nEscribe el nombre del dueño del vehiculo")
     for (let i = 0; i < aux_Posicion_sacar.length; i++) {
         for (let j = 0; j < aux_Posicion_sacar[i].length; j++) {
@@ -27,6 +27,9 @@ function sacar_vehiculo(situacion, coches, camiones) {
 
         }
 
+    }
+    if (!encontro_sacar) {
+        alert("No se encontró el vrhiculo con el nombre especificado")
     }
     return aux_Posicion_sacar
 

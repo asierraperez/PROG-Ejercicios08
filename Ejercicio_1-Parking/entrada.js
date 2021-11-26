@@ -1,4 +1,5 @@
 function entrada(Posiciones, coche, camion, n_coche, n_camiones) {
+
     var aux_posiciones = Posiciones
     var aux_coche = new coche()
     var aux_camion = new camion()
@@ -7,6 +8,7 @@ function entrada(Posiciones, coche, camion, n_coche, n_camiones) {
     var menu_entrada = prompt("PARKING\nVehiculo a intoducir" +
         "\n1.-Coche\n2.-Camión")
     menu_entrada = parseInt(menu_entrada)
+
     switch (menu_entrada) {
         case 1:
             //primero recorro la matriz de posiciones
@@ -20,12 +22,10 @@ function entrada(Posiciones, coche, camion, n_coche, n_camiones) {
                         aux_coche.propietario = prompt("Nombre del dueño")
                         aux_posiciones[i][j] = aux_coche
                         encontro_posicion = true
-
                         if (encontro_posicion) {
                             break
                         }
                     }
-
                 }
                 if (encontro_posicion) {
                     break
@@ -35,9 +35,10 @@ function entrada(Posiciones, coche, camion, n_coche, n_camiones) {
                 coche.prototype.sumar()
                 //aux_coche.sumar()
                 alert(aux_coche.tipo + " guardado en posición: " + aux_coche.posicion_i + "," + aux_coche.posicion_j)
-
                 //aux_posiciones = control_coches(aux_posiciones, aux_coche, aux_n_coche)
                 console.table(aux_posiciones)
+            } else {
+                alert("No fue posible guardar " + aux_coche.tipo + ",\nParking completo")
             }
 
 
@@ -99,13 +100,13 @@ function entrada(Posiciones, coche, camion, n_coche, n_camiones) {
 
                 alert(aux_camion.tipo + " guardado en posiciones: (" + aux_camion.posicion_i1 + "," + aux_camion.posicion_j1 + "),(" + aux_camion.posicion_i2 + "," + aux_camion.posicion_j2 + ")")
 
+            } else {
+                alert("No fue posible guardar " + aux_coche.tipo + ",\nParking completo")
             }
-
-
-
             break;
 
         default:
+            alert("ERROR,\nOrden no reconocida")
 
             break;
     }
