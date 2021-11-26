@@ -1,10 +1,35 @@
-function entrada(Posiciones, coche, camion, n_coche, n_camiones) {
-
+/**
+ * Entrada de datos por el usuario
+ * @param {Array<object>} Posiciones - Posiciones libres y ocupadas en el parking
+ * @param {object} coche - objeto con los datos de los coches guardados
+ * @param {object} camion - objeto con los datos de los camiones guardados 
+ * @returns {Array<object>} - Resultado de introducir un vehiculo nuevo
+ */
+function entrada(Posiciones, coche, camion,) {
+    /**
+     * auxiliar par aintroducir un vehiculo en el parking
+     * @type {Array<object>}
+     */
     var aux_posiciones = Posiciones
+    /**
+     * auxiliar, introducir un coche
+     * @type {object}
+     */
     var aux_coche = new coche()
+    /**
+     * auxiliar, introducir un camion
+     * @type {object}
+     */
     var aux_camion = new camion()
+    /**
+     * true=>encontro una posición disponible ; false=> no encontró posición
+     * @type {boolean}
+     */
     var encontro_posicion = false
-    var aux_n_coche = n_coche
+    /**
+     * Seleccion de operación
+     * @type {number}
+     */
     var menu_entrada = prompt("PARKING\nVehiculo a intoducir" +
         "\n1.-Coche\n2.-Camión")
     menu_entrada = parseInt(menu_entrada)
@@ -22,6 +47,7 @@ function entrada(Posiciones, coche, camion, n_coche, n_camiones) {
                         aux_coche.propietario = prompt("Nombre del dueño")
                         aux_posiciones[i][j] = aux_coche
                         encontro_posicion = true
+                        //en cuanto encuentre la primera posición disponible salgo el bucle
                         if (encontro_posicion) {
                             break
                         }
@@ -32,17 +58,11 @@ function entrada(Posiciones, coche, camion, n_coche, n_camiones) {
                 }
             }
             if (encontro_posicion) {
-                coche.prototype.sumar()
-                //aux_coche.sumar()
                 alert(aux_coche.tipo + " guardado en posición: " + aux_coche.posicion_i + "," + aux_coche.posicion_j)
-                //aux_posiciones = control_coches(aux_posiciones, aux_coche, aux_n_coche)
                 console.table(aux_posiciones)
             } else {
                 alert("No fue posible guardar " + aux_coche.tipo + ",\nParking completo")
             }
-
-
-
             break;
 
         case 2:
@@ -96,12 +116,11 @@ function entrada(Posiciones, coche, camion, n_coche, n_camiones) {
                 }
             }
             if (encontro_posicion) {
-                camion.prototype.sumar()
 
                 alert(aux_camion.tipo + " guardado en posiciones: (" + aux_camion.posicion_i1 + "," + aux_camion.posicion_j1 + "),(" + aux_camion.posicion_i2 + "," + aux_camion.posicion_j2 + ")")
 
             } else {
-                alert("No fue posible guardar " + aux_coche.tipo + ",\nParking completo")
+                alert("No fue posible guardar " + aux_camion.tipo + ",\nParking completo")
             }
             break;
 
