@@ -18,6 +18,7 @@ function visualizar(posiciones) {
      * @type {number}
      */
     var aux_vehiculo
+    var comprobar = false
     /**
      * seleccion de operacion
      * @type {number}
@@ -29,54 +30,64 @@ function visualizar(posiciones) {
 
     switch (menu_visualizar) {
         case 1:
-            /**
-             * nombre del dueño
-             * @type {string}
-             */
-            var nombre = prompt("Introduce nombre del propietario")
+            comprobar = comprobar_parking(aux_ver_posiciones)
 
-            for (let i = 0; i < aux_ver_posiciones.length; i++) {
-                for (let j = 0; j < aux_ver_posiciones[i].length; j++) {
-                    //si el nombre de alguna posicion coincide con el introducido
-                    if (aux_ver_posiciones[i][j].propietario == nombre) {
-                        if (aux_ver_posiciones[i][j].tipo == "coche") {
-                            alert("Nombre del propetario: " + aux_ver_posiciones[i][j].propietario +
-                                "\nTipo de vehículo: " + aux_ver_posiciones[i][j].tipo +
-                                "\nPosicion: " + aux_ver_posiciones[i][j].posicion_i + "," + aux_ver_posiciones[i][j].posicion_j)
-                        }
-                        if (aux_ver_posiciones[i][j].tipo == "camion") {
-                            alert("Nombre del propetario: " + aux_ver_posiciones[i][j].propietario +
-                                "\nTipo de vehículo: " + aux_ver_posiciones[i][j].tipo +
-                                "\nPosicion: (" + aux_ver_posiciones[i][j].posicion_i1 + " , " + aux_ver_posiciones[i][j].posicion_j1 +
-                                ").(" + aux_ver_posiciones[i][j].posicion_i2 + "," + aux_ver_posiciones[i][j].posicion_j2 + ")")
+            if (comprobar) {
+                /**
+                 * nombre del dueño
+                * @type {string}
+                */
+                var nombre = prompt("Introduce nombre del propietario")
+
+                for (let i = 0; i < aux_ver_posiciones.length; i++) {
+                    for (let j = 0; j < aux_ver_posiciones[i].length; j++) {
+                        //si el nombre de alguna posicion coincide con el introducido
+                        if (aux_ver_posiciones[i][j].propietario == nombre) {
+                            if (aux_ver_posiciones[i][j].tipo == "coche") {
+                                alert("Nombre del propetario: " + aux_ver_posiciones[i][j].propietario +
+                                    "\nTipo de vehículo: " + aux_ver_posiciones[i][j].tipo +
+                                    "\nPosicion: " + aux_ver_posiciones[i][j].posicion_i + "," + aux_ver_posiciones[i][j].posicion_j)
+                            }
+                            if (aux_ver_posiciones[i][j].tipo == "camion") {
+                                alert("Nombre del propetario: " + aux_ver_posiciones[i][j].propietario +
+                                    "\nTipo de vehículo: " + aux_ver_posiciones[i][j].tipo +
+                                    "\nPosicion: (" + aux_ver_posiciones[i][j].posicion_i1 + " , " + aux_ver_posiciones[i][j].posicion_j1 +
+                                    ").(" + aux_ver_posiciones[i][j].posicion_i2 + "," + aux_ver_posiciones[i][j].posicion_j2 + ")")
+                            }
                         }
                     }
                 }
             }
+
+
             break;
 
         case 2:
-            /**
-             * fila a consultar
-             * @type {number}
-             */
-            var ver_pos_i = prompt("Introduce la posición de la fila")
-            /**
-             * columna a consultar
-             * @type {number}
-             */
-            var ver_pos_j = prompt("Introduce la posición de la columna")
+            comprobar = comprobar_parking(aux_ver_posiciones)
+            if (comprobar) {
+                /**
+            * fila a consultar
+            * @type {number}
+            */
+                var ver_pos_i = prompt("Introduce la posición de la fila")
+                /**
+                 * columna a consultar
+                 * @type {number}
+                 */
+                var ver_pos_j = prompt("Introduce la posición de la columna")
 
-            ver_pos_i = parseInt(ver_pos_i)
-            ver_pos_j = parseInt(ver_pos_j)
-            //busco en esa posición en concreto a ver que hay
-            if (aux_ver_posiciones[ver_pos_i][ver_pos_j] != 0) {
-                alert("En posición: " + ver_pos_i + " , " + ver_pos_j +
-                    "\nVehículo guardado: " + aux_ver_posiciones[ver_pos_i][ver_pos_j].tipo +
-                    "\nPropietario: " + aux_ver_posiciones[ver_pos_i][ver_pos_j].propietario)
-            } else {
-                alert("No se encontro ningun vehiculo en la posicion indicada")
+                ver_pos_i = parseInt(ver_pos_i)
+                ver_pos_j = parseInt(ver_pos_j)
+                //busco en esa posición en concreto a ver que hay
+                if (aux_ver_posiciones[ver_pos_i][ver_pos_j] != 0) {
+                    alert("En posición: " + ver_pos_i + " , " + ver_pos_j +
+                        "\nVehículo guardado: " + aux_ver_posiciones[ver_pos_i][ver_pos_j].tipo +
+                        "\nPropietario: " + aux_ver_posiciones[ver_pos_i][ver_pos_j].propietario)
+                } else {
+                    alert("No se encontro ningun vehiculo en la posicion indicada")
+                }
             }
+
             break;
 
         case 3:

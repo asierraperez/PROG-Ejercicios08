@@ -40,6 +40,7 @@ function main() {
      * @type {boolean}
      */
     var rep_ver = false
+    var comprobar_sacar = false
     do {
         /**
          * seleccion de operacion
@@ -59,9 +60,16 @@ function main() {
                 break;
             case 2:
                 do {
-                    lugares_ocupados = sacar_vehiculo(lugares_ocupados)
-                    console.table(lugares_ocupados)
-                    rep_sacar = confirmar("sacar otro vehículo")
+                    comprobar_sacar = comprobar_parking(lugares_ocupados)
+                    if (comprobar_sacar) {
+                        lugares_ocupados = sacar_vehiculo(lugares_ocupados)
+                        console.table(lugares_ocupados)
+                        rep_sacar = confirmar("sacar otro vehículo")
+
+
+                    } else {
+                        rep_sacar = false
+                    }
                 } while (rep_sacar);
 
                 break;
